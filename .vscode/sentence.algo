@@ -1,0 +1,34 @@
+ALGORITHM sentence-check
+//DECLARATION OF VARIABLES
+ VAR 
+    str:STRING;
+    L,i:INTEGER;
+    nb_mot,nb_voy:INTEGER=0;
+BEGIN
+ WRITE ("Give a sentence");
+ READ(str);//GET THE SENTENCE.
+
+ L:= LENGTH(str);//It Gives the length of the sentence.
+
+ FOR i FROM 0 to L-1 DO  //Check all the characters one by one 
+    IF (str[i]=" " and i<>0) THEN 
+    /*we begin with the second character and we count the spaces in the sentence.*/ 
+        nb_mot=nb_mot+1;
+    /*the sentence end with a point 
+    so the last word doesn't count with spaces 
+    we should add 1 to have the right count*/
+    ELSE_IF (str[i]="." and i=L-1) THEN//
+       nb_mot=nb_mot+1;
+       BREAK;
+    ELSE_IF (str[i] in ("a","e","u","i","o")) THEN 
+    /*it checks if the character is a voyel and add 1 to the nb_voy */
+        nb_voy=nb_voy+1;
+    
+    END_IF
+    
+ END FOR
+ /* Return Results*/
+  WRITE("The length of sentence=",L);
+  WRITE("Number of Words=",nb_mot);
+  WRITE("Number of Voyels=",nb_voy);
+END
