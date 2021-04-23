@@ -2,23 +2,24 @@ ALGORITHM sentence-check
 //DECLARATION OF VARIABLES
  VAR 
     str:STRING;
-    L,i:INTEGER;
-    nb_mot,nb_voy:INTEGER=0;
+    i:INTEGER;
+    L,nb_mot,nb_voy:INTEGER:=0;
 BEGIN
  WRITE ("Give a sentence");
  READ(str);//GET THE SENTENCE.
-
- L:= LENGTH(str);//It Gives the length of the sentence.
-
+WHILE (str[L]<>".") DO
+    L++
+END_WHILE//It Gives the length of the sentence.
+ str.toLowerCase()//change to lower case
  FOR i FROM 0 to L-1 DO  //Check all the characters one by one 
     IF (str[i]=" " and i<>0) THEN 
     /*we begin with the second character and we count the spaces in the sentence.*/ 
-        nb_mot=nb_mot+1;
+        nb_mot++
     /*the sentence end with a point 
     so the last word doesn't count with spaces 
     we should add 1 to have the right count*/
     ELSE_IF (str[i]="." and i=L-1) THEN//
-       nb_mot=nb_mot+1;
+       nb_mot++
        BREAK;
     ELSE_IF (str[i] in ("a","e","u","i","o")) THEN 
     /*it checks if the character is a voyel and add 1 to the nb_voy */
